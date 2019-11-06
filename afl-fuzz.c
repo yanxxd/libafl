@@ -5972,7 +5972,7 @@ static void usage(u8* argv0) {
 
        argv0, EXEC_TIMEOUT, MEM_LIMIT, doc_path);
 
-  exit(1);
+  //exit(1);
 
 }
 
@@ -6573,6 +6573,7 @@ u8 afl_init(char *cmdline) {
   char *argv[MAX_ARGS] = {0};
   static char g_cmdline[1024];
 
+  printf("%s\n", cmdline);
   memset(g_cmdline, 0, sizeof(g_cmdline));
   strcpy(g_cmdline, cmdline);
   char *param = strtok(g_cmdline, " ");
@@ -6755,10 +6756,14 @@ u8 afl_init(char *cmdline) {
       default:
 
         usage(argv[0]);
+        return -1;
 
     }
 
-  if (optind == argc || /*!in_dir ||*/ !out_dir) usage(argv[0]);
+  if (optind == argc || /*!in_dir ||*/ !out_dir) {
+  	usage(argv[0]);
+    return -1;
+  }
 
   setup_signal_handlers();
   check_asan_opts();
@@ -6928,6 +6933,11 @@ u8 afl_close(){
 
 	  exit(0);
 
+}
+
+u32 *afl_get_result()
+{
+	return afl_result;
 }
 
 #ifndef AFL_LIB

@@ -24,7 +24,7 @@ MISC_PATH   = $(PREFIX)/share/afl
 
 # PROGS intentionally omit afl-as, which gets installed elsewhere.
 
-PROGS       = afl-gcc afl-fuzz afl-showmap afl-tmin afl-gotcpu afl-analyze afl-fuzz.so test_fuzz_one
+PROGS       = afl-gcc afl-fuzz afl-showmap afl-tmin afl-gotcpu afl-analyze libafl.so test_fuzz_one
 SH_PROGS    = afl-plot afl-cmin afl-whatsup
 
 CFLAGS     ?= -funroll-loops
@@ -72,7 +72,7 @@ afl-as: afl-as.c afl-as.h $(COMM_HDR) | test_x86
 afl-fuzz: afl-fuzz.c $(COMM_HDR) | test_x86
 	$(CC) $(CFLAGS) $@.c -o $@ $(LDFLAGS)
 
-afl-fuzz.so: afl-fuzz.c $(COMM_HDR) | test_x86
+libafl.so: afl-fuzz.c $(COMM_HDR) | test_x86
 	$(CC) $(CFLAGS) -fPIC -shared -DAFL_LIB afl-fuzz.c -o $@ $(LDFLAGS)
 	
 test_fuzz_one: test_fuzz_one.c | test_x86
@@ -119,7 +119,7 @@ all_done: test_build
 clean:
 	rm -f $(PROGS) afl-as as afl-g++ afl-clang afl-clang++ *.o *~ a.out core core.[1-9][0-9]* *.stackdump test .test test-instr .test-instr0 .test-instr1 qemu_mode/qemu-2.10.0.tar.bz2 afl-qemu-trace
 	rm -rf out_dir qemu_mode/qemu-2.10.0
-	rm -f test_fuzz_one afl-fuzz.so
+	rm -f test_fuzz_one libafl.so
 	$(MAKE) -C llvm_mode clean
 	$(MAKE) -C libdislocator clean
 	$(MAKE) -C libtokencap clean

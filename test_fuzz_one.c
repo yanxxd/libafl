@@ -36,7 +36,7 @@ int main(int argc, char **argv){
 
 	void* dh;
 
-	dh = dlopen("afl-fuzz.so", RTLD_NOW);
+	dh = dlopen("libafl.so", RTLD_NOW);
 	if (!dh)
 		FATAL("%s", dlerror());
 
