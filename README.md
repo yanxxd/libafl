@@ -1,10 +1,10 @@
 # afl-fuzz-one
-## build
+## 1. build
 `make`
 
-## test
-`export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.`
-`../test_fuzz_one in/README`
+## 2. test
+`export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.`  
+`../test_fuzz_one in/README`  
 
 output
 ```
