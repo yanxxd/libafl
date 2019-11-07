@@ -1,7 +1,7 @@
 # afl-fuzz-one
-Only test one time use AFL's havoc.
-Print [coverage, is_crash, exec_us, is_new_path].
-Testcase is `new_seed`.
+Only test one time use AFL's havoc.  
+Print [coverage, is_crash, exec_us, is_new_path].  
+Testcase is `new_seed`.  
 
 ## 1. build
 `make`
