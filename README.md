@@ -1,7 +1,7 @@
 # afl-fuzz-one
-Only test one time use AFL's havoc.
-Print [coverage, is_crash, exec_us, is_new_path].
-Testcase is `new_seed`.
+Only test one time use AFL's havoc.  
+Print [coverage, is_crash, exec_us, is_new_path].  
+Testcase is `new_seed`.  
 
 ## 1. build
 `make`
@@ -9,7 +9,7 @@ Testcase is `new_seed`.
 ## 2. test
 
 ### 2.1 C
-`export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.`
+`export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.`  
 `../test_fuzz_one in/seed`
 
 output
